@@ -1,0 +1,51 @@
+
+  <!-- Main Nav bar  -->  
+  <nav class="navbar fixed-top navbar-expand-sm bg-light navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">
+        <img src="../../../assets/G2 Logo.png" alt="logo" style="width:40px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                  <a class="nav-link" routerLink="">
+                  <i class="fas fa-home"></i> Home
+              </a>
+            </li>
+            <li class="nav-item">
+                  <a class="nav-link" routerLink="/contact">
+                  <i class="fas fa-phone"></i> Contact Us
+              </a>
+            </li>   
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/faq">
+              <i class="fas fa-question"></i> FAQ
+          </a>
+        </li>          
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-clipboard-list"></i>Ticket</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/ticket/list">Ticket List</a></li>
+                <li><a class="dropdown-item" routerLink="/ticket/add">Submit Ticket</a></li>
+              </ul>
+            </li>          
+            <li class="nav-item">  
+                <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()"><i class="fas fa-lock"></i>Sign Out</a>
+                <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/signin"><i class="fas fa-key"></i>Signin</a>
+            </li> 
+            <li>
+              <i class="fas fa-user-shield" style="color:gold" *ngIf="auth.username != null && auth.username == 'admin@email.ca'"></i>
+            </li>
+            <li class="nav-link">
+              <a *ngIf="auth.username != null" class="navbar-text text-success ml-5 d-non d-lg-inline">Welcome, {{ auth.username }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <br>
+    <br>

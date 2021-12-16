@@ -1,0 +1,68 @@
+<!-- <%- include ../partials/header.ejs }} -->
+<app-header></app-header>
+
+  <!-- Main Content -->
+  <main class="container-fluid">
+    <div class="row">
+        <h1>Ticket List</h1>
+        <br>
+        <div>
+            <a  *ngIf="auth.username != null" routerLink="/ticket/add" class="btn btn-primary align-self-end" role="button">
+                <i class="fas fa-plus-circle"></i> 
+                Add A New Ticket
+            </a>                
+        </div>
+
+        <div class="table-responsive">
+            <div>
+            <input type="checkbox" id="showCompleted" name="showCompleted" unchecked (change)="boxCheck($event)">
+            <label for="showCompleted">Check to view completed tickets</label>
+            </div>
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center">Asset Tag</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Location</th>
+                    <th class="text-center">Issue</th>
+                    <th class="text-center">Note</th>
+                    <th class="text-center">Progress</th>
+                    <th class="text-center">ETA</th>
+                    <th class="text-center" colspan="2" *ngIf="auth.username == 'admin@email.ca'">Actions</th>
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <!-- Repeatable Template Row -->
+
+                <!-- <% for(let count = 0; count < InventoryList.length; count++) { }} -->
+                <tr *ngFor="let item of inventoryList" >
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.assetTag  }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.empName }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.email }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.phone }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.location }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.issue }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.note }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.progress }} </td>
+                    <td class="text-center" *ngIf="item.progress != 'Completed' || completedCheck == true"> {{ item.eta }} </td>
+
+                    
+                    <td class="text-center">
+                        <button [routerLink]="['/ticket/edit/', item._id]" class="btn bg-primary btn-primary btn-sm" *ngIf="auth.username == 'admin@email.ca' && item.progress != 'Completed'">
+                            <i class="fas fa-edit" *ngIf="item.progress != 'Completed'"></i></button>
+                    </td>
+                    <td class="text-center">
+                        <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm" *ngIf="auth.username == 'admin@email.ca' && item.progress != 'Completed' || auth.username == 'admin@email.ca' && completedCheck == true">
+                            <i class="fas fa-ban" *ngIf="item.progress != 'Completed' || auth.username == 'admin@email.ca' && completedCheck == true"></i></a>
+                    </td>
+                </tr> 
+                <!-- <% } }} -->
+            </table>
+        </div>
+    </div>
+  </main>
+<!-- <%- include ../partials/footer.ejs }} -->
+<app-footer></app-footer>

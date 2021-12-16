@@ -1,0 +1,126 @@
+<app-header></app-header>
+
+<!-- Content for the Add_Edit page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1>{{editing ? "Edit" : "Add a new"}} Ticket</h1>
+
+            <form novalidate #form="ngForm" (ngSubmit)="save(form)">
+            <!-- <form class="form" method="POST"> -->
+                <div class="form-group">
+                    <input type="hidden"
+                        name="id"
+                        [(ngModel)]="item._id"
+                    >
+                    <label for="itemTextField">Employee Name</label>
+                    <input type="text" class="form-control"
+                        id="nameTextField"
+                        placeholder="Enter the Employee Name"
+                        name="empName" 
+                        [(ngModel)]="item.empName"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="emailTextField">Email</label>
+                    <input type="text" class="form-control"
+                    id="emailTextField"
+                    placeholder="Email Address"
+                    name="email" 
+                    [(ngModel)]="item.email"
+                    required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="phoneTextField">Phone Number</label>
+                    <input type="text" class="form-control"
+                    id="phoneTextField"
+                    placeholder="Phone Number"
+                    name="phone" 
+                    [(ngModel)]="item.phone"
+                    required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="assetTagTextField">Asset Tag</label>
+                    <input type="text" class="form-control"
+                    id="assetTagTextField"
+                    placeholder="Asset Tag"
+                    name="assetTag" 
+                    [(ngModel)]="item.assetTag"
+                    required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="locationTextField">location</label>
+                    <input type="text" class="form-control"
+                    id="locationTextField"
+                    placeholder="Location"
+                    name="location" 
+                    [(ngModel)]="item.location"
+                    required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="issueTextField">Issue</label>
+                    <input type="text" class="form-control"
+                    id="issueTextField"
+                    placeholder="Issue"
+                    name="issue" 
+                    [(ngModel)]="item.issue"
+                    required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="noteTextField">Note</label>
+                    <textarea type="text" class="form-control"
+                    id="noteTextField"
+                    placeholder="Note"
+                    name="note" 
+                    [(ngModel)]="item.note"
+                    required></textarea>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="progressTextField">Progress</label>
+                    <select type="text" class="form-control"
+                    id="progressTextField"
+                    placeholder="Progress"
+                    name="progress" 
+                    [(ngModel)]="item.progress"
+                    required>
+                        <option value="On Standby">On Standby</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="etaTextField">ETA</label>
+                    <input type="date" class="form-control" value="2021-01-01" min="2021-01-01" max="2023-01-01"
+                    id="etaTextField"
+                    placeholder="ETA"
+                    name="eta" 
+                    [(ngModel)]="item.eta"
+                    required>
+                </div>
+
+                <br>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> 
+                    Submit
+                </button>
+                
+                <a routerLink="/ticket/list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> 
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>
